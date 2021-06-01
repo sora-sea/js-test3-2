@@ -12,10 +12,14 @@
     task.appendChild(statusBtn);
   };
   
-  const createDeleteBtn = (task) => {
+  const createDeleteBtn = (task, index) => {
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = '削除';
     task.appendChild(deleteBtn);
+    deleteBtn.addEventListener('click', () => {
+      todos.splice(index, 1);
+      displayTodos(todos);
+    });
   };
 
   const displayTodos = (array) => {
@@ -30,7 +34,7 @@
       task.appendChild(taskId);
       task.appendChild(taskComment);
       createStatusBtn(task);
-      createDeleteBtn(task);
+      createDeleteBtn(task, index);
     });
   };
   
